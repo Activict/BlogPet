@@ -1,0 +1,25 @@
+﻿@model MyBlog.Web.ViewModel.PageCounter
+<div class="blog-page-left">
+@if (Model.HasPreviewPage)
+{
+    @Html.ActionLink("Назад", "Index", "Blog",
+                 new { page = Model.Page - 1 },
+                 new { @class = "blog-link-counter-back" })
+    @Html.ActionLink((Model.Page - 1).ToString(), "Index", "Blog",
+                 new { page = Model.Page - 1 },
+                 new { @class = "blog-link-counter-back" })
+}
+</div>
+<span class="blog-count-page">@Model.Page</span>
+
+<div class="blog-page-right">
+@if (Model.HasNextPage)
+{
+    @Html.ActionLink((Model.Page + 1).ToString(), "Index", "Blog",
+                 new { page = Model.Page + 1 },
+                 new { @class = "blog-link-counter-next" })
+    @Html.ActionLink("Вперед", "Index", "Blog",
+                 new { page = Model.Page + 1 },
+                 new { @class = "blog-link-counter-next" })
+}
+</div>

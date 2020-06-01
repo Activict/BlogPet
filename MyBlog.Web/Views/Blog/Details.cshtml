@@ -1,0 +1,27 @@
+﻿@model MyBlog.BLL.DTO.BlogDTO
+
+@{
+    Layout = "~/Views/Shared/_ViewStart.cshtml";
+}
+
+<div class="left-panel">
+    @await Component.InvokeAsync("LeftPanel")
+</div>
+
+<div class="blog-one">
+    <div class="blog-title-one"> @Html.DisplayFor(modelItem => Model.Title) </div>
+    <div class="blog-info-one">
+        <div class="blog-user-one"> @Model.UserDTO.Login</div>
+        <div class="blog-date-one"> @Model.DateCreated.ToString("dd.MM.yyyy, HH:mm") </div>
+        <div class="blog-date-change-one"> изменено @Model.DateLastChange?.ToString("dd.MM.yyyy, HH:mm")</div>
+    </div>
+    <div class="blog-body-one"> @Html.Raw(Model.Body) </div>
+    <div>
+        @Html.ActionLink("Изменить", "Update", "Blog",
+       new { id = Model.Id },
+       new { @class = "blog-link-update" })
+        @Html.ActionLink("Удалить", "Delete", "Blog",
+        new { id = Model.Id },
+        new { @class = "blog-link-delete" })
+    </div>
+</div>

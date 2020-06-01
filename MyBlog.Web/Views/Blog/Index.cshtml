@@ -1,0 +1,40 @@
+﻿@model MyBlog.Web.ViewModel.BlogsViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_ViewStart.cshtml";
+}
+
+<div class="left-panel">
+    @await Component.InvokeAsync("LeftPanel")
+</div>
+
+<div class="blogs">
+    <div class="blog-link-create">
+        <a asp-action="Create">Новый блог</a>
+    </div>
+
+    @foreach (var item in Model.blogs)
+    {
+<div class="blog">
+    <div class="blog-info">
+        <div class="blog-title"> @Html.DisplayFor(modelItem => item.Title) </div>
+        <div class="blog-user"> @item.UserDTO.Login</div>
+        <div class="blog-date"> @item.DateCreated.ToString("dd.MM.yyyy, HH:mm")</div>
+        <div class="blog-date-change">
+            @if (item.DateLastChange != null) {<span>изменён</span>}
+            @item.DateLastChange?.ToString("dd.MM.yyyy, HH:mm")
+        </div>
+    </div>
+    <div class="blog-body"> @Html.Raw(item.Body) 
+        @Html.ActionLink("Читать далее", "Details", "Blog",
+       new { id = item.Id },
+       new { @class = "blog-link-open" })
+    </div>
+</div>
+    }
+    <div class="blogs-pages">
+        @await Component.InvokeAsync("BlogsPage", Model.pageCounter) 
+    </div>
+</div>

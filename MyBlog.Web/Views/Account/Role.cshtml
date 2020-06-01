@@ -1,0 +1,16 @@
+﻿@model MyBlog.BLL.DTO.Account.RoleDTO
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = "~/Views/Shared/_ViewStart.cshtml";
+}
+
+<div class="blog" id="blog-one">
+    <form asp-controller="account" asp-action="role" method="post">
+        <div class="form-update">
+            <label asp-for="Name">Name:</label>
+            <input asp-for="Name" />
+        </div>
+        <button type="submit">Создать</button>
+    </form>
+</div>

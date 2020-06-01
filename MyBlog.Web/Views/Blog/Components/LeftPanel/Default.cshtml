@@ -1,0 +1,11 @@
+﻿@model IEnumerable<MyBlog.BLL.DTO.BlogDTO>
+
+ViewComponent
+<ul>
+    @foreach (var blog in Model)
+    {
+        <li>
+            @blog.Title
+        </li>
+    }
+</ul>

@@ -1,0 +1,23 @@
+﻿@model MyBlog.BLL.DTO.BlogDTO
+
+@{
+    Layout = "~/Views/Shared/_ViewStart.cshtml";
+}
+
+<div class="left-panel">
+    @await Component.InvokeAsync("LeftPanel")
+</div>
+
+<div class="blog" id="blog-one">
+    <form asp-controller="blog" asp-action="delete" method="post">
+        <div class="form-update">
+            <label asp-for="Title">Title:</label>
+            <div asp-for="Title" class="form-control">@Model.Title</div>
+        </div>
+        <div class="form-update">
+            <label asp-for="Body">Блог:</label>
+            <div asp-for="Body" class="form-control">@Model.Body</div>
+        </div>
+        <button type="submit">Удалить</button>
+    </form>
+</div>
