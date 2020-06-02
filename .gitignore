@@ -344,3 +344,4 @@ healthchecksdb
 # Excel project
 .idea
 node_modules
+dist
