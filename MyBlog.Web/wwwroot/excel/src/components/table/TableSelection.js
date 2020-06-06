@@ -17,9 +17,17 @@ export class TableSelection {
     this.group = []
   }
 
+  get selectedIds() {
+    return this.group.map($el => $el.id())
+  }
+
   selectGroup($group = []) {
     this.clearSelected()
     this.group = $group
     this.group.forEach($el => $el.addClass('selected'))
+  }
+
+  applyStyle(style) {
+    this.group.forEach($el => $el.css(style))
   }
 }
