@@ -12,11 +12,12 @@
   }
 
   &:active, &.active{
-    color: $color;
+    color: white;
+    background: #888888;
   }
 
   &:hover{
-    background: #eee;
+    background: #888888;
     cursor: pointer;
   }
 }
